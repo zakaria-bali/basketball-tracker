@@ -1,6 +1,5 @@
 import { Team } from './../../../../core/models/nba-data.model';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';;
 
 @Component({
   selector: 'app-select-team',
@@ -14,7 +13,8 @@ export class SelectTeamComponent implements OnInit {
 
   @Output()
   trackTeam: EventEmitter<Team> = new EventEmitter<Team>();
-  selectedTeam: FormControl = new FormControl('');
+
+  selectedTeam: Team | null = null;
 
 
   constructor() { }
@@ -22,11 +22,10 @@ export class SelectTeamComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onTrackTeamClicked() {
-    if (this.selectedTeam.value) {
-      this.trackTeam.emit(this.selectedTeam.value);
+  onTrackTeamClicked(): void {
+    if (this.selectedTeam) {
+      this.trackTeam.emit(this.selectedTeam);
     }
-
   }
 
 }

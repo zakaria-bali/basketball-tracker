@@ -1,6 +1,6 @@
 <div>
   <div>
-    <app-select-team [teams]="(nBATeams$ |  async) ?? []"></app-select-team>
+    <app-select-team [teams]="(nBATeams$ |  async) ?? []" (trackTeam)="onTrackTeam($event)"></app-select-team>
   </div>
   <div>
     <app-teams-list></app-teams-list>

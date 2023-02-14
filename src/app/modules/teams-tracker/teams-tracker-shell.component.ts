@@ -18,4 +18,9 @@ export class TeamsTrackerShellComponent implements OnInit {
     this.nBATeams$ = this.nBADataService.getAllNBATeams();
   }
 
+  onTrackTeam(team: Team): void {
+    // console.log('Selected team');
+    // console.log(team.division);
+  }
+
 }
