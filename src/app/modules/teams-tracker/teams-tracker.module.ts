@@ -5,6 +5,7 @@ import { TeamsTrackerShellComponent } from './teams-tracker-shell.component';
 import { SelectTeamComponent } from './components/select-team/select-team.component';
 import { TeamCardComponent } from './components/team-card/team-card.component';
 import { TeamsListComponent } from './components/teams-list/teams-list.component';
+import { GameResultIconComponent } from './components/game-result-icon/game-result-icon.component';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { TeamsListComponent } from './components/teams-list/teams-list.component
     TeamsTrackerShellComponent,
     SelectTeamComponent,
     TeamCardComponent,
-    TeamsListComponent
+    TeamsListComponent,
+    GameResultIconComponent
   ],
   imports: [
     TeamsTrackerRoutingModule,

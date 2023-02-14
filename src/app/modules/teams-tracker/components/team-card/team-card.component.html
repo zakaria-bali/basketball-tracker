@@ -1,1 +1,33 @@
-<p>team-card works!</p>
+<div class="card-container">
+  <div class="card-title">
+    <div style="flex: 1">
+      <h2>{{ team?.full_name + ' [' + team?.abbreviation + ']' }}</h2>
+      <p> {{ team?.conference }} conference </p>
+
+    </div>
+    <div class="remove-btn-container">
+        <button id="{{ 'remove' + team?.abbreviation }}">
+          X
+        </button>
+    </div>
+  </div>
+
+  <hr>
+
+  <div style="display: flex; flex-direction: row;">
+    <div class="flex: 1; display: flex; flex-direction: colum;">
+        <p>
+          Results of past 12 <br />
+          days:
+        </p>
+        <div style="display: flex; flex-direction: row;">
+          <app-game-result-icon *ngFor="let game of team?.games" [game]="game" [id]="team?.id" >
+          </app-game-result-icon>
+        </div>
+    </div>
+    <div>
+      <img src="{{ 'https://interstate21.com/nba-logos/' + team?.abbreviation + '.png' }}" height="100px" width="100px" />
+    </div>
+
+  </div>
+</div>

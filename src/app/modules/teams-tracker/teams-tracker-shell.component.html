@@ -3,6 +3,6 @@
     <app-select-team [teams]="(nBATeams$ |  async) ?? []" (trackTeam)="onTrackTeam($event)"></app-select-team>
   </div>
   <div>
-    <app-teams-list></app-teams-list>
+    <app-teams-list [trackedTeams]="trackedTeams"></app-teams-list>
   </div>
 </div>

@@ -1,0 +1,13 @@
+<ng-container *ngIf="id && game">
+  <ng-container [ngSwitch]="gameService.getTeamResult(id,game)">
+    <div class="icon lose" *ngSwitchCase="'L'">
+      L
+    </div>
+    <div class="icon win" *ngSwitchCase="'W'">
+      W
+    </div>
+    <div class="icon draw" *ngSwitchCase="'D'">
+      D
+    </div>
+  </ng-container>
+</ng-container>

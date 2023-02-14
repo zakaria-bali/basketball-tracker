@@ -1,0 +1,23 @@
+.icon {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  padding: 5px;
+  border-radius: 50%;
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.win {
+  background-color: green;
+}
+
+.lose {
+  background-color: red;
+}
+
+.draw {
+  background-color: gray;
+}
