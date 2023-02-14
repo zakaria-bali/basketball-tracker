@@ -1,5 +1,5 @@
 
-type Conference = "East" | "West"
+export type Conference = "East" | "West"
 
 export interface Team {
   id: number;
