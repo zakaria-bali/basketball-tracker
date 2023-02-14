@@ -1,1 +1,8 @@
-<p>teams-list works!</p>
+<div class="container">
+  <app-team-card
+    *ngFor="let team of trackedTeams"
+    [team]="team"
+  >
+
+  </app-team-card>
+</div>

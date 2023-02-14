@@ -1,6 +1,7 @@
-import { Observable } from 'rxjs';
+import { TeamDetails } from './../../core/models/nba-data.model';
+import { Observable, Subscription } from 'rxjs';
 import { NBADataService } from './../../core/services/nba-data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Team } from 'src/app/core/models/nba-data.model';
 
 @Component({
@@ -8,9 +9,12 @@ import { Team } from 'src/app/core/models/nba-data.model';
   templateUrl: './teams-tracker-shell.component.html',
   styleUrls: ['./teams-tracker-shell.component.scss']
 })
-export class TeamsTrackerShellComponent implements OnInit {
-
+export class TeamsTrackerShellComponent implements OnInit, OnDestroy {
+  teamGamesSubscription$: Subscription | null = null;
   nBATeams$: Observable<Team[]> | undefined
+
+
+  trackedTeams: TeamDetails[] = [];
 
   constructor(private nBADataService: NBADataService) { }
 
@@ -18,9 +22,16 @@ export class TeamsTrackerShellComponent implements OnInit {
     this.nBATeams$ = this.nBADataService.getAllNBATeams();
   }
 
+  ngOnDestroy(): void {
+    this.teamGamesSubscription$?.unsubscribe();
+  }
+
   onTrackTeam(team: Team): void {
-    // console.log('Selected team');
-    // console.log(team.division);
+     this.teamGamesSubscription$ = this.nBADataService.getTeamLast12DaysGames(team.id).subscribe(
+      (response) => {
+        this.trackedTeams.push({ ...team, games: response })
+      }
+    )
   }
 
 }

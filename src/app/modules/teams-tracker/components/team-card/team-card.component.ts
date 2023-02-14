@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { TeamDetails } from 'src/app/core/models/nba-data.model';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-team-card',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team-card.component.scss']
 })
 export class TeamCardComponent implements OnInit {
+  @Input()
+  team: TeamDetails | undefined;
 
   constructor() { }
 

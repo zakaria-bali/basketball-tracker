@@ -1,5 +1,4 @@
 
-
 type Conference = "East" | "West"
 
 export interface Team {
@@ -12,7 +11,6 @@ export interface Team {
   name: string
 }
 
-
 export interface PaginationMetaData {
   total_pages: number;
   current_page: number;
@@ -21,8 +19,33 @@ export interface PaginationMetaData {
   total_count: number;
 }
 
-export interface AllTeamsResponse {
-  data: Team[];
-  meta:PaginationMetaData
+export interface PaginatedResponse {
+  meta: PaginationMetaData;
+}
 
+export interface AllTeamsResponse extends PaginatedResponse {
+  data: Team[];
+
+}
+
+export interface Game {
+  id: number;
+  date: string;
+  home_team: Team;
+  home_team_score: number;
+  period: number;
+  postseason: boolean;
+  season: number
+  status: string;
+  time: string;
+  visitor_team: Team
+  visitor_team_score: number
+}
+
+export interface TeamDetails extends Team {
+  games: Game[]
+}
+
+export interface GamesResponse extends PaginatedResponse{
+  data: Game[]
 }

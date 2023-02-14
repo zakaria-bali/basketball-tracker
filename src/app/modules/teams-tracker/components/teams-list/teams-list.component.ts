@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { TeamDetails } from './../../../../core/models/nba-data.model';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-teams-list',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teams-list.component.scss']
 })
 export class TeamsListComponent implements OnInit {
+
+  @Input()
+  trackedTeams: TeamDetails[] = [];
 
   constructor() { }
 
