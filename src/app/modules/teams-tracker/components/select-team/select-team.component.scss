@@ -1,0 +1,16 @@
+#teamInput {
+  padding: 6px;
+}
+
+#trackBtn {
+  background-color: #1170d3;
+  color: #fff;
+  margin-left: 10px;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+#trackBtn:disabled {
+  cursor: auto;
+}

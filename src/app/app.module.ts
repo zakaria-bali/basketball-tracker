@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    TeamsTrackerModule
+    TeamsTrackerModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: NbaApiInterceptor, multi: true}

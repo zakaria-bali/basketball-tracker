@@ -1,1 +1,11 @@
-<p>select-team works!</p>
+<div>
+  <select name="teams" id="teamInput" [formControl]="selectedTeam">
+    <option value=""> select a team ... </option>
+    <option  *ngFor="let team of teams" [value]="team"> {{ team.full_name }} </option>
+  </select>
+
+  <button id="trackBtn" (click)="onTrackTeamClicked()" [disabled]="!selectedTeam.value">
+    Track team
+  </button>
+</div>
+
