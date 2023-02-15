@@ -43,9 +43,18 @@ export interface Game {
 }
 
 export interface TeamDetails extends Team {
-  games: Game[]
+  games: Game[];
+  avg_pts_scored?: number;
+  avg_pts_conceded?: number;
+  long_name?: string;
+
 }
 
 export interface GamesResponse extends PaginatedResponse{
   data: Game[]
+}
+
+export interface TeamAvgPoints {
+  avg_pts_scored: number;
+  avg_pts_conceded: number;
 }

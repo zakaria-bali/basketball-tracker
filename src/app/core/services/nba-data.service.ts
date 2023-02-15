@@ -1,4 +1,4 @@
-import { GamesResponse } from './../models/nba-data.model';
+import { GamesResponse, TeamDetails } from './../models/nba-data.model';
 import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -36,5 +36,20 @@ export class NBADataService {
     }
 
     return queryParamDates.join('&dates[]=');
+  }
+
+  updateTrackedTeamsStorage(trackedTeams: TeamDetails[]): void{
+    localStorage.setItem('trackedItems', JSON.stringify(trackedTeams))
+  }
+
+  getStoredTrackedTeams(): TeamDetails[] {
+    const trackedTeams: string | null = localStorage.getItem('trackedItems');
+
+    if (trackedTeams) {
+      return JSON.parse(trackedTeams)
+    }
+
+    return []
+
   }
 }

@@ -1,9 +1,8 @@
 <div class="container">
-  <app-team-card
-    *ngFor="let team of trackedTeams"
+  <div  *ngFor="let team of trackedTeams" class="card-wrapper">
+    <app-team-card
     [team]="team"
-    (removeTeam)="onRemoveTeam($event)"
-  >
-
-  </app-team-card>
+    (removeTeam)="onRemoveTeam($event)">
+    </app-team-card>
+  </div>
 </div>
