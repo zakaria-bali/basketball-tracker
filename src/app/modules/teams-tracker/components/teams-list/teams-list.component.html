@@ -2,6 +2,7 @@
   <app-team-card
     *ngFor="let team of trackedTeams"
     [team]="team"
+    (removeTeam)="onRemoveTeam($event)"
   >
 
   </app-team-card>

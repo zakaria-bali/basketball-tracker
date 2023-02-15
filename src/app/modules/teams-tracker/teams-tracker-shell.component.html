@@ -1,8 +1,9 @@
 <div>
+  <h2>NBA Score Tracking App</h2>
   <div>
     <app-select-team [teams]="(nBATeams$ |  async) ?? []" (trackTeam)="onTrackTeam($event)"></app-select-team>
   </div>
-  <div>
-    <app-teams-list [trackedTeams]="trackedTeams"></app-teams-list>
+  <div class="teams-list-container">
+    <app-teams-list [trackedTeams]="trackedTeams" (removeTeam)="onRemoveTeam($event)"></app-teams-list>
   </div>
 </div>

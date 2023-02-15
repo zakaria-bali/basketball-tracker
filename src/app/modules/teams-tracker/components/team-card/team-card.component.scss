@@ -1,6 +1,9 @@
 .card-container {
   display: flex;
   flex-direction: column;
+  border: 1px solid rgb(192, 191, 191);
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .card-title {
@@ -37,13 +40,26 @@ hr {
   flex-direction: row;
 }
 
+.card-img {
+  margin: 10px;
+}
+
 .results-btn {
   background-color: green;
   color: #fff;
   padding: 8px;
   border: none;
+  cursor: pointer;
 }
 
 .card-footer {
   padding: 10px 0px;
+}
+
+.remove-btn {
+  border: none;
+  background-color: transparent;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
 }

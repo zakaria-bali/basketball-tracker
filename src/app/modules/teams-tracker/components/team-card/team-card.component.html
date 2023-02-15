@@ -1,12 +1,12 @@
 <div class="card-container">
   <div class="card-title">
     <div style="flex: 1">
-      <h2>{{ team?.full_name + ' [' + team?.abbreviation + ']' }}</h2>
+      <h3>{{ team?.full_name + ' [' + team?.abbreviation + ']' }}</h3>
       <p> {{ team?.conference | conference }} conference </p>
 
     </div>
     <div class="remove-btn-container">
-        <button id="{{ 'remove' + team?.abbreviation }}">
+        <button id="{{ 'remove' + team?.abbreviation }}" class="remove-btn" (click)="remove()">
           X
         </button>
     </div>
@@ -26,12 +26,12 @@
         </div>
     </div>
     <div>
-      <img src="{{ 'https://interstate21.com/nba-logos/' + team?.abbreviation + '.png' }}" height="100px" width="100px" />
+      <img src="{{ 'https://interstate21.com/nba-logos/' + team?.abbreviation + '.png' }}" height="100px" width="100px" class="card-img" />
     </div>
   </div>
   <div class="card-footer">
-    <a [routerLink]="['results', team?.id]" id="{{'results' + team?.abbreviation}}" class="results-btn">
+    <button [routerLink]="['results', team?.id]" id="{{'results' + team?.abbreviation}}" class="results-btn">
       See game results > >
-    </a>
+    </button>
   </div>
 </div>

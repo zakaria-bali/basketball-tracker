@@ -34,4 +34,8 @@ export class TeamsTrackerShellComponent implements OnInit, OnDestroy {
     )
   }
 
+  onRemoveTeam(id: number): void {
+    this.trackedTeams = this.trackedTeams.filter((team: TeamDetails) => team.id !== id)
+  }
+
 }
