@@ -1,0 +1,19 @@
+<div class="card-container">
+  <div class="card-title">
+    <div class="flex-1">
+      <h3>{{ team?.long_name }}</h3>
+      <p> {{ team?.conference | conference }} conference </p>
+
+    </div>
+    <div class="remove-btn-container">
+        <button id="{{ 'remove' + team?.abbreviation }}" class="remove-btn" (click)="remove()" *ngIf="!isResult">
+          X
+        </button>
+    </div>
+  </div>
+
+  <hr />
+
+  <ng-content>
+  </ng-content>
+</div>
