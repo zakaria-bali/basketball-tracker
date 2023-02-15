@@ -1,16 +1,17 @@
-import { GamesResponse, TeamDetails } from './../models/nba-data.model';
+import { GamesResponse, TeamDetails, TeamAvgPoints } from './../models/nba-data.model';
 import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, pipe } from 'rxjs';
 import { AllTeamsResponse, Game, Team } from '../models/nba-data.model';
+import { GameService } from './game.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NBADataService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private gameService: GameService) { }
 
   getAllNBATeams(): Observable<Team[]> {
     return this.http.get<AllTeamsResponse>(`${environment.BASE_URL}/teams`).pipe(
@@ -23,6 +24,21 @@ export class NBADataService {
     return this.http.get<GamesResponse>(`${environment.BASE_URL}/games?page=0&dates[]=${last12DaysDateQueryParam}&per_page=12&team_ids[]=${id}`).pipe(
       map((response: GamesResponse): Game[] => response.data)
     );
+  }
+
+  getTeamDetails(team: Team): Promise<TeamDetails> {
+    //* we create a promise because to promise is deprecated
+    const promise: Promise<TeamDetails> = new Promise((resolve, reject) => {
+      this.getTeamLast12DaysGames(team.id).subscribe({
+        next: (games: Game[]) => {
+          const teamAvgPoints: TeamAvgPoints = this.gameService.getTeamAvgPoints(team.id, games);
+          resolve({ ...team,  ...teamAvgPoints, games: games,  long_name: `${team.full_name} [${team.abbreviation}]` })
+        },
+        error: (error) => reject(error)
+      })
+    })
+
+    return promise;
   }
 
   generateLast12DaysQueryParam(): string {
@@ -52,7 +68,7 @@ export class NBADataService {
     return []
   }
 
-  getTeamDetails(id: number): TeamDetails | undefined {
+  getStoredTeamDetails(id: number): TeamDetails | undefined {
     const storedTeams: TeamDetails[] = this.getStoredTrackedTeams();
     const team = storedTeams.find((team: TeamDetails) => team.id === id)
     if (team) {

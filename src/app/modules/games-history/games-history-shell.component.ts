@@ -18,7 +18,7 @@ export class GamesHistoryShellComponent implements OnInit {
   ngOnInit(): void {
     this.teamCode = Number(this.route.snapshot.params['teamCode']);
     if (this.teamCode) {
-      this.teamDetails = this.nBADataService.getTeamDetails(this.teamCode);
+      this.teamDetails = this.nBADataService.getStoredTeamDetails(this.teamCode);
     }
   }
 

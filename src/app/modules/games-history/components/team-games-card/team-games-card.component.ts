@@ -6,18 +6,12 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
   templateUrl: './team-games-card.component.html',
   styleUrls: ['./team-games-card.component.scss']
 })
-export class TeamGamesCardComponent implements OnInit, OnChanges {
+export class TeamGamesCardComponent implements OnInit {
 
   @Input()
   team: TeamDetails | undefined;
 
   constructor() { }
-
-  ngOnChanges(changes: SimpleChanges): void {
-     if (this.team) {
-      this.team = { ...this.team, long_name: `${this.team.full_name} [${this.team.abbreviation}]` };
-     }
-  }
 
   ngOnInit(): void {
   }
