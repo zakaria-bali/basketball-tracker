@@ -50,6 +50,17 @@ export class NBADataService {
     }
 
     return []
+  }
 
+  getTeamDetails(id: number): TeamDetails | undefined {
+    const storedTeams: TeamDetails[] = this.getStoredTrackedTeams();
+    const team = storedTeams.find((team: TeamDetails) => team.id === id)
+    if (team) {
+      return team
+    }
+
+    // * todo include the fetch data from the server:
+
+    return undefined
   }
 }

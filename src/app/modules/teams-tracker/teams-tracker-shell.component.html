@@ -1,5 +1,4 @@
 <div>
-  <h2>NBA Score Tracking App</h2>
   <div>
     <app-select-team [teams]="(nBATeams$ |  async) ?? []" (trackTeam)="onTrackTeam($event)"></app-select-team>
   </div>
