@@ -4,17 +4,9 @@ import { CommonModule } from '@angular/common';
 import { ConferencePipe } from './pipes/conference.pipe';
 import { BaseCardComponent } from './components/base-card/base-card.component';
 
-
-
 @NgModule({
-  declarations: [
-    ConferencePipe,
-    BaseCardComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule
-  ],
-  exports: [CommonModule, FormsModule, ConferencePipe, BaseCardComponent]
+  declarations: [ConferencePipe, BaseCardComponent],
+  imports: [CommonModule, FormsModule],
+  exports: [CommonModule, FormsModule, ConferencePipe, BaseCardComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

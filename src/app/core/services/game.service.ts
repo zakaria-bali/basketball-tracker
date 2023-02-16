@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { Game, TeamAvgPoints } from '../models/nba-data.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GameService {
-
-  constructor() { }
+  constructor() {}
 
   isHomeTeamWin(game: Game): boolean {
     if (game.home_team_score > game.visitor_team_score) {
@@ -37,7 +36,7 @@ export class GameService {
       }
 
       if (this.isVisitorTeamWin(game)) {
-        return 'L'
+        return 'L';
       }
     } else {
       if (this.isHomeTeamWin(game)) {
@@ -45,20 +44,19 @@ export class GameService {
       }
 
       if (this.isVisitorTeamWin(game)) {
-        return 'W'
+        return 'W';
       }
     }
 
-    return 'D'
-
+    return 'D';
   }
 
-  getTeamAvgPoints(id: number, games: Game[]): TeamAvgPoints{
-    if ( games.length === 0 ) {
+  getTeamAvgPoints(id: number, games: Game[]): TeamAvgPoints {
+    if (games.length === 0) {
       return {
         avg_pts_scored: 0,
-        avg_pts_conceded: 0
-      }
+        avg_pts_conceded: 0,
+      };
     }
 
     let teamScoredPoints = 0;
@@ -74,11 +72,11 @@ export class GameService {
       }
     }
 
-    const avgPtsScored = Math.round(teamScoredPoints/games.length)
-    const avgPtsConceded = Math.round(teamConcededPoints/games.length)
+    const avgPtsScored = Math.round(teamScoredPoints / games.length);
+    const avgPtsConceded = Math.round(teamConcededPoints / games.length);
     return {
       avg_pts_scored: avgPtsScored,
-      avg_pts_conceded: avgPtsConceded
+      avg_pts_conceded: avgPtsConceded,
     };
   }
 }

@@ -5,7 +5,7 @@ import { GameService } from 'src/app/core/services/game.service';
 @Component({
   selector: 'app-game-result-icon',
   templateUrl: './game-result-icon.component.html',
-  styleUrls: ['./game-result-icon.component.scss']
+  styleUrls: ['./game-result-icon.component.scss'],
 })
 export class GameResultIconComponent implements OnInit {
   @Input()
@@ -14,9 +14,7 @@ export class GameResultIconComponent implements OnInit {
   @Input()
   game: Game | undefined;
 
-  constructor(public gameService: GameService) { }
+  constructor(public gameService: GameService) {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

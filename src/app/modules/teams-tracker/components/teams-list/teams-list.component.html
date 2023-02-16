@@ -1,12 +1,11 @@
 <div class="container">
-  <div  *ngFor="let team of trackedTeams" class="card-wrapper">
+  <div *ngFor="let team of trackedTeams" class="card-wrapper">
     <app-base-card
-    [team]="team"
-    [isResult]="false"
-    (removeTeam)="onRemoveTeam($event)">
-      <app-team-card-content [team]="team">
-
-      </app-team-card-content>
+      [team]="team"
+      [isResult]="false"
+      (removeTeam)="onRemoveTeam($event)"
+    >
+      <app-team-card-content [team]="team"> </app-team-card-content>
     </app-base-card>
   </div>
 </div>

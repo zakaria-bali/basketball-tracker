@@ -5,12 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: TeamsTrackerShellComponent
-  }
+    component: TeamsTrackerShellComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class TeamsTrackerRoutingModule { }
+export class TeamsTrackerRoutingModule {}

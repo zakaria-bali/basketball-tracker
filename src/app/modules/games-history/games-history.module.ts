@@ -5,16 +5,12 @@ import { GamesHistoryShellComponent } from './games-history-shell.component';
 import { GameScoreComponent } from './components/game-score/game-score.component';
 import { TeamGamesCardContentComponent } from './components/team-games-card-content/team-games-card-content.component';
 
-
 @NgModule({
   declarations: [
     GamesHistoryShellComponent,
     GameScoreComponent,
-    TeamGamesCardContentComponent
+    TeamGamesCardContentComponent,
   ],
-  imports: [
-    GamesHistoryRoutingModule,
-    SharedModule
-  ]
+  imports: [GamesHistoryRoutingModule, SharedModule],
 })
-export class GamesHistoryModule { }
+export class GamesHistoryModule {}

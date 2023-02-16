@@ -4,16 +4,13 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-game-score',
   templateUrl: './game-score.component.html',
-  styleUrls: ['./game-score.component.scss']
+  styleUrls: ['./game-score.component.scss'],
 })
 export class GameScoreComponent implements OnInit {
-
   @Input()
-  game: Game | undefined
+  game: Game | undefined;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

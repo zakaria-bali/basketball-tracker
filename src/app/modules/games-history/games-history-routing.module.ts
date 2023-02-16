@@ -5,12 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: ':teamCode',
-    component: GamesHistoryShellComponent
-  }
+    component: GamesHistoryShellComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class GamesHistoryRoutingModule { }
+export class GamesHistoryRoutingModule {}

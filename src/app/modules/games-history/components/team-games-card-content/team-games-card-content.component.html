@@ -1,11 +1,11 @@
 <div class="card-body">
-  <p>
-    Scores of past 12 days:
-  </p>
+  <p>Scores of past 12 days:</p>
   <div>
-    <app-game-score *ngFor="let game of team?.games" [game]="game"></app-game-score>
+    <app-game-score
+      *ngFor="let game of team?.games"
+      [game]="game"
+    ></app-game-score>
   </div>
-
 </div>
 <div class="card-footer">
   <button [routerLink]="['/']" id="backBtn" class="back-btn">

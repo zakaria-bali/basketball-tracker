@@ -4,10 +4,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-base-card',
   templateUrl: './base-card.component.html',
-  styleUrls: ['./base-card.component.scss']
+  styleUrls: ['./base-card.component.scss'],
 })
 export class BaseCardComponent implements OnInit {
-
   @Input()
   team: TeamDetails | undefined;
 
@@ -17,15 +16,13 @@ export class BaseCardComponent implements OnInit {
   @Output()
   removeTeam: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   remove(): void {
     if (this.team) {
       this.removeTeam.emit(this.team.id);
     }
   }
-
 }

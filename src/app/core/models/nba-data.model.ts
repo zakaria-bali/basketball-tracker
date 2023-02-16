@@ -1,14 +1,13 @@
-
-export type Conference = "East" | "West"
+export type Conference = 'East' | 'West';
 
 export interface Team {
   id: number;
   abbreviation: string;
   city: string;
-  conference: Conference
-  division: string
-  full_name: string
-  name: string
+  conference: Conference;
+  division: string;
+  full_name: string;
+  name: string;
 }
 
 export interface PaginationMetaData {
@@ -25,7 +24,6 @@ export interface PaginatedResponse {
 
 export interface AllTeamsResponse extends PaginatedResponse {
   data: Team[];
-
 }
 
 export interface Game {
@@ -35,11 +33,11 @@ export interface Game {
   home_team_score: number;
   period: number;
   postseason: boolean;
-  season: number
+  season: number;
   status: string;
   time: string;
-  visitor_team: Team
-  visitor_team_score: number
+  visitor_team: Team;
+  visitor_team_score: number;
 }
 
 export interface TeamDetails extends Team {
@@ -47,11 +45,10 @@ export interface TeamDetails extends Team {
   avg_pts_scored?: number;
   avg_pts_conceded?: number;
   long_name?: string;
-
 }
 
-export interface GamesResponse extends PaginatedResponse{
-  data: Game[]
+export interface GamesResponse extends PaginatedResponse {
+  data: Game[];
 }
 
 export interface TeamAvgPoints {

@@ -1,11 +1,16 @@
 <div>
   <select name="teams" id="teamInput" [(ngModel)]="selectedTeam">
-    <option [ngValue]="null"> select a team ... </option>
-    <option  *ngFor="let team of teams" [ngValue]="team"> {{ team.full_name }} </option>
+    <option [ngValue]="null">select a team ...</option>
+    <option *ngFor="let team of teams" [ngValue]="team">
+      {{ team.full_name }}
+    </option>
   </select>
 
-  <button id="trackBtn" (click)="onTrackTeamClicked()" [disabled]="!selectedTeam">
+  <button
+    id="trackBtn"
+    (click)="onTrackTeamClicked()"
+    [disabled]="!selectedTeam"
+  >
     Track team
   </button>
 </div>
-
