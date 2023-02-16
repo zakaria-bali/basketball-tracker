@@ -1,0 +1,16 @@
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.back-btn {
+  background-color: green;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.card-footer {
+  padding: 10px 0px;
+}

@@ -1,3 +1,6 @@
-<app-team-games-card [team]="teamDetails">
-
-</app-team-games-card>
+<div class="team-games-container">
+  <app-base-card  [team]="teamDetails" [isResult]="true">
+    <app-team-games-card-content [team]="teamDetails">
+    </app-team-games-card-content>
+  </app-base-card>
+</div>
