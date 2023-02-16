@@ -2,7 +2,7 @@ import { GamesResponse, TeamDetails, TeamAvgPoints } from './../models/nba-data.
 import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, pipe } from 'rxjs';
+import { map, mergeMap, Observable, pipe } from 'rxjs';
 import { AllTeamsResponse, Game, Team } from '../models/nba-data.model';
 import { GameService } from './game.service';
 
@@ -17,6 +17,10 @@ export class NBADataService {
     return this.http.get<AllTeamsResponse>(`${environment.BASE_URL}/teams`).pipe(
       map((response: AllTeamsResponse): Team[] => response.data)
     )
+  }
+
+  getTeam(id: number): Observable<Team> {
+    return this.http.get<Team>(`${environment.BASE_URL}/teams/${id}`)
   }
 
   getTeamLast12DaysGames(id: number): Observable<Game[]> {
@@ -39,6 +43,26 @@ export class NBADataService {
     })
 
     return promise;
+  }
+
+  getTeamDetailsById(id: number): Observable<TeamDetails> {
+    return this.getTeam(id).pipe(
+      mergeMap(
+        (team: Team) => {
+          return this.getTeamLast12DaysGames(id).pipe(
+            map((games: Game[]) => {
+              const teamAvgPoints: TeamAvgPoints = this.gameService.getTeamAvgPoints(id, games);
+              return {
+                ...team,
+                ...teamAvgPoints,
+                games: games,
+                long_name: `${team.full_name} [${team.abbreviation}]`
+              }
+            })
+          )
+        }
+      )
+    )
   }
 
   generateLast12DaysQueryParam(): string {

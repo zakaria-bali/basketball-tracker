@@ -19,6 +19,11 @@ export class GamesHistoryShellComponent implements OnInit {
     this.teamCode = Number(this.route.snapshot.params['teamCode']);
     if (this.teamCode) {
       this.teamDetails = this.nBADataService.getStoredTeamDetails(this.teamCode);
+      if (!this.teamDetails) {
+        this.nBADataService.getTeamDetailsById(this.teamCode).subscribe((team) => {
+          this.teamDetails = team;
+        })
+      }
     }
   }
 
