@@ -23,7 +23,7 @@ export class TeamsTrackerShellComponent implements OnInit {
   async onTrackTeam(team: Team): Promise<void>{
     const isTeamExist = this.trackedTeams.some((item: Team) => item.id === team.id)
     if ( !isTeamExist ) {
-      const teamDetails: TeamDetails = await this.nBADataService.getTeamDetails(team);
+      const teamDetails: TeamDetails = await this.nBADataService.getTeamDetailsWithGames(team);
       this.trackedTeams.push(teamDetails);
       this.nBADataService.updateTrackedTeamsStorage(this.trackedTeams);
     }

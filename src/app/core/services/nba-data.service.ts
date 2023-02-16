@@ -30,7 +30,7 @@ export class NBADataService {
     );
   }
 
-  getTeamDetails(team: Team): Promise<TeamDetails> {
+  getTeamDetailsWithGames(team: Team): Promise<TeamDetails> {
     //* we create a promise because to promise is deprecated
     const promise: Promise<TeamDetails> = new Promise((resolve, reject) => {
       this.getTeamLast12DaysGames(team.id).subscribe({
@@ -63,6 +63,24 @@ export class NBADataService {
         }
       )
     )
+  }
+
+  getTeamDetails(id: number): Promise<TeamDetails> {
+    const promise: Promise<TeamDetails> = new Promise<TeamDetails>((resolve, reject) => {
+      const team = this.getStoredTeamDetails(id);
+      if (team) {
+        resolve(team)
+      } else {
+        this.getTeamDetailsById(id).subscribe({
+          next: (teamDetails: TeamDetails) => {
+            resolve(teamDetails)
+          },
+          error: (error) => reject(error)
+        })
+      }
+    })
+
+    return promise;
   }
 
   generateLast12DaysQueryParam(): string {

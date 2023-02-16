@@ -15,15 +15,10 @@ export class GamesHistoryShellComponent implements OnInit {
 
   constructor(private nBADataService: NBADataService, private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.teamCode = Number(this.route.snapshot.params['teamCode']);
     if (this.teamCode) {
-      this.teamDetails = this.nBADataService.getStoredTeamDetails(this.teamCode);
-      if (!this.teamDetails) {
-        this.nBADataService.getTeamDetailsById(this.teamCode).subscribe((team) => {
-          this.teamDetails = team;
-        })
-      }
+      this.teamDetails = await this.nBADataService.getTeamDetails(this.teamCode);
     }
   }
 
