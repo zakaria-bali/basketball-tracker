@@ -6,7 +6,7 @@ import {
 import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, mergeMap, Observable, pipe } from 'rxjs';
+import { concatMap, map, mergeMap, Observable, pipe } from 'rxjs';
 import { AllTeamsResponse, Game, Team } from '../models/nba-data.model';
 import { GameService } from './game.service';
 
@@ -58,7 +58,7 @@ export class NBADataService {
 
   getTeamDetailsById(id: number): Observable<TeamDetails> {
     return this.getTeam(id).pipe(
-      mergeMap((team: Team) => {
+      concatMap((team: Team) => {
         return this.getTeamLast12DaysGames(id).pipe(
           map((games: Game[]) => {
             const teamAvgPoints: TeamAvgPoints =
@@ -130,7 +130,7 @@ export class NBADataService {
     if (team) {
       return team;
     }
-    
+
     return undefined;
   }
 }
